@@ -30,12 +30,16 @@ public class Ball : MonoBehaviour
 
         }
         if (collision.gameObject.CompareTag("BallLost"))
-        {
-            Debug.Log("Ball is lost");
+{
+    Debug.Log("Ball is lost");
 
-            //Reload current scene in 2 seconds (so that the sound can play)
-            Invoke("ReloadScene", 2f);
-        }
+    // stop further collisions so the sound only happens once
+    GetComponent<Collider>().enabled = false; 
+    GetComponent<Rigidbody>().isKinematic = true;
+
+    //Reload current scene in 2 seconds (so that the sound can play)
+    Invoke("ReloadScene", 2f);
+}
 
         if (collision.gameObject.CompareTag("DestroyFoe"))
         {

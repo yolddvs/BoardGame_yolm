@@ -3,26 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     public void LoadNextScene()
     {
-        //load next scene or the first scene if the current scene is the last one
+        // Load next scene or loop to first scene if currently at the last one
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        SceneManager.LoadScene(nextSceneIndex);
     }
-    
-    //load a scene by its name
+
+    // Load a scene by its name
     public void LoadByName(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
